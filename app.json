@@ -1,0 +1,12 @@
+{
+  "name": "partiu",
+  "displayName": "partiu",
+  "expo": {
+    "name": "partiu",
+    "slug": "partiu",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
