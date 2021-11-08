@@ -17,12 +17,17 @@ export default {
         title: '#363F5F',
         text: '#969CB2',
         text_dark: '#000000',
-        background: '#F0F2F5'
+        background: '#F0F2F5',
+        dark_light: '#50555A',
     },
 
     fonts: {
         regular: 'Poppins_400Regular',
         medium: 'Poppins_500Medium',
-        bold: 'Poppins_700Bold'
+        bold: 'Poppins_700Bold',
+        regular_Inter: 'Inter_400Regular',
+        medium_Inter: 'Inter_500Medium',
+        bold_Inter: 'Inter_700Bold',
+        bold_RobotoSlab: 'RobotoSlab_700Bold',
     }
 }
