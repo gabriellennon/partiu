@@ -11,6 +11,8 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 import { Home } from '../screens/Home';
 import { Contribuir } from '../screens/Contribuir';
+import { More } from '../screens/More';
+import { Inicio } from '../screens/Inicio';
 
 export function AppRoutes(){
     const theme = useTheme();
@@ -31,6 +33,10 @@ export function AppRoutes(){
             }}
             
         >
+            {/* <Screen 
+                name="Inicio"
+                component={Inicio}
+            /> */}
             <Screen 
                 name="Partiu!"
                 component={Home}
@@ -59,7 +65,7 @@ export function AppRoutes(){
             />
             <Screen 
                 name="Mais"
-                component={Contribuir}
+                component={More}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialIcons 
