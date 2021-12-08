@@ -19,6 +19,9 @@
   >
     <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="YOUR-APP-URL-HERE"/>
     <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="YOUR-APP-SDK-VERSION-HERE"/>
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBrmn1Tm3BH9iwnMyNmQA3pIhje5xDXCF0"/>
+    <!-- <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB1O8amubeMkw_7ok2jUhtVj9IkME9K8sc"/> -->
+
     <activity
       android:name=".MainActivity"
       android:label="@string/app_name"

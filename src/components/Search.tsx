@@ -17,7 +17,7 @@ export function Search(){
         // onLocationSelected(data, details)
       }}
       query={{
-        key: 'AIzaSyANlH7daMYufxdqGzoiJOfMVfNBeeQx1KA',
+        key: 'AIzaSyBrmn1Tm3BH9iwnMyNmQA3pIhje5xDXCF0',
         language: 'pt',
       }}
       placeholder="Para onde deseja ir?"

@@ -5,6 +5,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import {
   Container
 } from './styles';
+import { Search } from '../../components/Search';
 
 export function Home(){
   //Seta a localidade inicial do mapa
@@ -30,6 +31,7 @@ export function Home(){
       >
         <Marker coordinate={mapRegionMarker} title='Olha eu' description="Ver como passar o local de search pra casa" />
       </MapView>
+      <Search />
     </Container>
   );
 }
