@@ -39,7 +39,7 @@ export function AppRoutes(){
             /> */}
             <Screen 
                 name="Partiu!"
-                component={Home}
+                component={Inicio}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialIcons 

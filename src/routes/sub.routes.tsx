@@ -1,18 +1,18 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
+import { Home } from '../screens/Home';
 
 
 
-// const { Navigator, Screen } = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
-export function StackRoutes(){
+export function SubRoutes(){
     return(
-        <></>
-        //dizendo qual tela que quer que comece o app
-    //     <Navigator headerMode="none" initialRouteName="Splash">
-    //         <Screen 
-                
-    //         />
-    //     </Navigator>
+        <Navigator>
+            <Screen 
+                name="Home"
+                component={Home}
+            />
+        </Navigator>
     )
 }
