@@ -11,6 +11,7 @@ import { RobotoSlab_500Medium, RobotoSlab_700Bold } from '@expo-google-fonts/rob
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
 import { Routes } from './src/routes';
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
 
@@ -25,9 +26,14 @@ export default function App() {
     RobotoSlab_700Bold
   });
 
-  return (
-    <ThemeProvider theme={theme}>
-        <Routes/>
-    </ThemeProvider>
-  );
+    //verificando se a fonta já está carregada
+    if (!fontsLoaded)
+    //enquanto a fonte nao foi carregada mostra a página de splash (logo)
+      return <AppLoading />
+
+    return (
+      <ThemeProvider theme={theme}>
+          <Routes/>
+      </ThemeProvider>
+    );
 }
