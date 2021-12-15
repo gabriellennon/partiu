@@ -10,7 +10,7 @@ import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold} fr
 import { RobotoSlab_500Medium, RobotoSlab_700Bold } from '@expo-google-fonts/roboto-slab';
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
-import { Routes } from './src/routes';
+import Routes from './src/routes';
 import AppLoading from 'expo-app-loading';
 
 export default function App() {

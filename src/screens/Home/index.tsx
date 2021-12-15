@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, StatusBar } from 'react-native';
 
 import {
-  Container
+  Container,
+  HeaderBack,
+  TitleBack
 } from './styles';
 import { Search } from '../../components/Search';
+import { useNavigation } from '@react-navigation/native';
+import { BackButton } from '../../components/BackButton';
 
 export function Home(){
+  const navigation = useNavigation();
+  
   //Seta a localidade inicial do mapa
   const [mapRegion, setmapRegion] = useState({
     latitude: -15.748182,
@@ -22,8 +28,17 @@ export function Home(){
     longitude: -47.753353,
   });
 
+  function handleBack(){
+    navigation.goBack();
+  }
+
   return (
     <Container>
+      <StatusBar barStyle="light-content" />
+      <HeaderBack>
+        <BackButton onPress={handleBack} />
+        <TitleBack>Voltar</TitleBack>
+      </HeaderBack>
       <MapView 
         style={styles.map} 
         region={mapRegion}
