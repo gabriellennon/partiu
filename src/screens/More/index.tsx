@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { CardMore } from '../../components/CardMore';
 
 import {
   Container, 
@@ -14,6 +15,7 @@ import {
   Icon,
   Content,
   Description,
+  ContainerCards
 } from './styles';
 
 export function More() {
@@ -36,6 +38,29 @@ export function More() {
       </Header>
       <Content>
         <Description>Seu nível</Description>
+
+        <ContainerCards>
+          <CardMore
+            IconHeader='home'
+            TitleButton='Minha casa'
+            onPress={() => {}}
+          />
+          <CardMore
+            IconHeader='location-on'
+            TitleButton='Minhas viagens'
+            onPress={() => {}}
+          />
+          <CardMore
+            IconHeader='monetization-on'
+            TitleButton='Orçamento e gastos'
+            onPress={() => {}}
+          />
+          <CardMore
+            IconHeader='check-circle'
+            TitleButton='Checklist'
+            onPress={() => {}}
+          />
+        </ContainerCards>
       </Content>
     </Container>
   );

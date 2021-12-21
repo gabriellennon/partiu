@@ -6,7 +6,7 @@ import { Feather} from '@expo/vector-icons';
 
 export const Container = styled.View`
     flex: 1;
-    /* background-color: ${({ theme }) => theme.colors.background}; */
+    background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Header = styled.View`
@@ -70,4 +70,9 @@ export const Description = styled.Text`
     font-size: ${RFValue(18)}px;
     font-family: ${({ theme }) => theme.fonts.medium };
     margin: 24px 0;
+`;
+
+export const ContainerCards = styled.View`
+    padding: 0 22px;
+    margin-top: 50px;
 `;

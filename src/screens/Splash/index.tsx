@@ -16,7 +16,7 @@ export function Splash(){
     }
     
     useEffect(() =>{
-        setTimeout(startApp(), 3000);
+        startApp();
     },[]);
 
     
