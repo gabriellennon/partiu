@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AuthRoutes from "./tabs.routes";
 import { Inicio } from "../screens/Inicio";
 import theme from "../styles/theme";
+import { Splash } from "../screens/Splash";
 
 const stackRoutes = createStackNavigator();
 
@@ -12,10 +13,12 @@ const AppRoutes: React.FC = () => (
             headerShown: false,
             
         }}
+        initialRouteName="Splash"
     >
 
         <stackRoutes.Screen name="Inicio" component={Inicio}/>
         <stackRoutes.Screen name="Home" component={AuthRoutes}/>
+        <stackRoutes.Screen name="Splash" component={Splash}/>
 
     </stackRoutes.Navigator>
 )
