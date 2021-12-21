@@ -1542,7 +1542,7 @@
 
 "@expo-google-fonts/poppins@^0.2.0":
   version "0.2.0"
-  resolved "https://registry.npmjs.org/@expo-google-fonts/poppins/-/poppins-0.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.2.0.tgz#f6df892909142740b53d3227cb5eb24990ece151"
   integrity sha512-NIwmzadXGHmS7F7nznfpObVAAi4PdSvueLKnPN3ERG0yMYrC8svEP2IY25H4xLoIGBazgkN192ZkStM3PMYajA==
 
 "@expo-google-fonts/roboto-slab@^0.2.0":

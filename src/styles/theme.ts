@@ -6,6 +6,7 @@ export default {
         pallete_logo_blue_ligth: '#83DBF2',
         pallete_logo_green: '#05AC6D',
         pallete_logo_green_ligth: '#48C4B4',
+        blue: '#0E1647',
 
         success: '#12A454',
         success_light: 'rgba(18, 164, 84, 0.5)',
@@ -19,6 +20,7 @@ export default {
         text_dark: '#000000',
         background: '#F0F2F5',
         dark_light: '#50555A',
+        orange: '#FF872C',
     },
 
     fonts: {
