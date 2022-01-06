@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { DataListProps } from '.';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
     flex: 1;
@@ -73,3 +74,16 @@ export const HistoriesList = styled(
         paddingBottom: getBottomSpace()
     }
 })``;
+
+export const ButtonNewTransaction = styled(RectButton)`
+    width: 60px;
+    height: 60px;
+    background-color: ${({ theme }) => theme.colors.primary};
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+
+    position: absolute;
+    bottom: 13px;
+    right: 22px;
+`;

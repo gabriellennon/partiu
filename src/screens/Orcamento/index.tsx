@@ -3,7 +3,8 @@ import { BackButton } from '../../components/BackButton';
 import { HighlightCard } from '../../components/HighlightCard';
 import { TransationCardProps } from '../../components/TransactionCard';
 import { TransactionCardHistory } from '../../components/TransactionCardHistory';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import {
     Container,
@@ -15,6 +16,7 @@ import {
     TitleHisotry,
     CardsHistoriesContainer,
     HistoriesList,
+    ButtonNewTransaction,
 } from './styles';
 
 export interface DataListProps extends TransationCardProps {
@@ -33,6 +35,7 @@ interface HighlightDataInterface {
 
 export function Orcamento() {
     const navigation = useNavigation();
+    const theme = useTheme();
     const [transactions, setTransactions] = useState<DataListProps[]>([]);
     //começa sendo vazio do tipo HighlightDataInterface
     const [highlightData, setHighlightData] = useState<HighlightDataInterface>({} as HighlightDataInterface);
@@ -117,6 +120,14 @@ export function Orcamento() {
                     />
                 </CardsHistoriesContainer>
             </History>
+
+            <ButtonNewTransaction onPress={() => {}}>
+                <MaterialIcons 
+                    name="add" 
+                    size={32} 
+                    color='#FFF'
+                />
+            </ButtonNewTransaction>
         </Container>
     );
 }
