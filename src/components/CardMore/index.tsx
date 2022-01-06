@@ -17,10 +17,11 @@ interface ButtoProps {
 export function CardMore({
     IconHeader,
     TitleButton,
+    onPress,
     ...rest 
 }:ButtoProps){
   return (
-    <Container>
+    <Container onPress={onPress}>
         <Header>
             <Icon name={IconHeader} />
             <Title>{TitleButton}</Title>

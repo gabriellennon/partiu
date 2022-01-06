@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { CardMore } from '../../components/CardMore';
@@ -19,6 +20,13 @@ import {
 } from './styles';
 
 export function More() {
+  const navigation = useNavigation();
+  
+  function handleGoClickButton(route: string){
+    
+    navigation.navigate(route as never, {} as never)
+  }
+
   return (
     <Container>
       <StatusBar barStyle="dark-content" />
@@ -53,7 +61,7 @@ export function More() {
           <CardMore
             IconHeader='monetization-on'
             TitleButton='Orçamento e gastos'
-            onPress={() => {}}
+            onPress={() => handleGoClickButton('Budget')}
           />
           <CardMore
             IconHeader='check-circle'

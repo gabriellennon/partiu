@@ -1,6 +1,7 @@
 export default {
     colors: {
         primary: '#4829C2',
+        primary_light: '#7057D1',
 
         secondary: '#4829C2',
         pallete_logo_blue_ligth: '#83DBF2',
