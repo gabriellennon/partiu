@@ -33,5 +33,23 @@ export const TextAction = styled.Text`
     font-size: ${RFValue(18)}px;
     font-family: ${({ theme }) => theme.fonts.bold_RobotoSlab };
     color: ${({ theme }) => theme.colors.shape};
-    margin-right: ${RFPercentage(10)}px;
+    margin-right: ${RFPercentage(17)}px;
+`;
+
+export const Form = styled.View`
+    flex: 1;
+    justify-content: space-between;
+    width: 100%;
+    padding: 24px;
+`;
+
+export const Fields = styled.View`
+
+`;
+
+export const TransactionTypes = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+    margin-bottom: 16px;
 `;

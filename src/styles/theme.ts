@@ -22,6 +22,7 @@ export default {
         background: '#F0F2F5',
         dark_light: '#50555A',
         orange: '#FF872C',
+        orange_light: 'rgba(255, 135, 44, 0.3)',
     },
 
     fonts: {
