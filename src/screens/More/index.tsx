@@ -66,7 +66,7 @@ export function More() {
           <CardMore
             IconHeader='check-circle'
             TitleButton='Checklist'
-            onPress={() => {}}
+            onPress={() => handleGoClickButton('Checklist')}
           />
         </ContainerCards>
       </Content>

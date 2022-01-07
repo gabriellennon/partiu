@@ -6,6 +6,7 @@ import theme from "../styles/theme";
 import { Splash } from "../screens/Splash";
 import { Orcamento } from "../screens/Orcamento";
 import { AddTransaction } from "../screens/AddTransaction";
+import { Checklist } from "../screens/Checklist";
 
 const stackRoutes = createStackNavigator();
 
@@ -23,6 +24,7 @@ const AppRoutes: React.FC = () => (
         <stackRoutes.Screen name="Splash" component={Splash}/>
         <stackRoutes.Screen name="Budget" component={Orcamento}/>
         <stackRoutes.Screen name="AddTransaction" component={AddTransaction}/>
+        <stackRoutes.Screen name="Checklist" component={Checklist}/>
 
     </stackRoutes.Navigator>
 )
