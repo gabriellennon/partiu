@@ -18,6 +18,7 @@ import {
     HistoriesList,
     ButtonNewTransaction,
 } from './styles';
+import { StatusBar } from 'react-native';
 
 export interface DataListProps extends TransationCardProps {
     id: string;
@@ -42,7 +43,11 @@ export function Orcamento() {
 
     function handleBack(){
         navigation.goBack();
-      }
+    }
+
+    function handleGoClickButton(route: string){
+        navigation.navigate(route as never, {} as never)
+    }
 
     useEffect(() => {
         //data mocked
@@ -76,6 +81,7 @@ export function Orcamento() {
 
     return (
         <Container>
+            <StatusBar barStyle="light-content" />
             <Header>
                 <TitleAction>
                     <BackButton onPress={handleBack} />
@@ -121,7 +127,7 @@ export function Orcamento() {
                 </CardsHistoriesContainer>
             </History>
 
-            <ButtonNewTransaction onPress={() => {}}>
+            <ButtonNewTransaction onPress={() => handleGoClickButton('AddTransaction')}>
                 <MaterialIcons 
                     name="add" 
                     size={32} 
