@@ -10,7 +10,10 @@ import {
     Header,
     TitleAction,
     TextAction,
-    ContentTask
+    ContentTask,
+    CountHeader,
+    TitleCount,
+    BoldCount,
 } from './styles';
 
 export type EditTaskArgs = {
@@ -89,6 +92,8 @@ export function Checklist() {
   
   }
 
+  const tasksCounterText = tasks.length === 1 ? 'item' : 'itens';
+
     return (
         <Container>
             <StatusBar barStyle="light-content" />
@@ -99,7 +104,10 @@ export function Checklist() {
                 </TitleAction>
             </Header>
             <ContentTask>
-                {/* <Header tasksCounter={tasks.length} /> */}
+                <CountHeader >
+                    <TitleCount>Você tem </TitleCount>
+                    <BoldCount>{tasks.length} {tasksCounterText}</BoldCount>
+                </CountHeader>
 
                 <TodoInput addTask={handleAddTask} />
 

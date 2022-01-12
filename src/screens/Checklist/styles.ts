@@ -36,3 +36,22 @@ export const TextAction = styled.Text`
 export const ContentTask = styled.View`
     flex: 1;
 `;
+
+export const CountHeader = styled.View`
+    padding-top: 16px;
+    padding-bottom: 2px;
+    padding-right: 25px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+`;
+
+export const TitleCount = styled.Text`
+    font-size: ${RFValue(12)}px;
+    font-family: ${({ theme }) => theme.fonts.medium_Inter};
+`;
+
+export const BoldCount = styled.Text`
+    font-size: ${RFValue(12)}px;
+    font-family: ${({ theme }) => theme.fonts.bold_Inter};
+`;

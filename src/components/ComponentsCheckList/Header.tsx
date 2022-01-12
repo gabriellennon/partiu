@@ -13,7 +13,6 @@ export function Header({ tasksCounter }: HeaderProps) {
   
   return (
     <View style={styles.container}>
-      <Image source={logoImg} />
       
       <View style={styles.tasks}>
         <Text style={styles.tasksCounter}>Você tem </Text>
