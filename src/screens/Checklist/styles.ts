@@ -32,3 +32,7 @@ export const TextAction = styled.Text`
     color: ${({ theme }) => theme.colors.shape};
     margin-right: ${RFPercentage(17)}px;
 `;
+
+export const ContentTask = styled.View`
+    flex: 1;
+`;
