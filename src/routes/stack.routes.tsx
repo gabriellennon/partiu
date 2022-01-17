@@ -7,6 +7,8 @@ import { Splash } from "../screens/Splash";
 import { Orcamento } from "../screens/Orcamento";
 import { AddTransaction } from "../screens/AddTransaction";
 import { Checklist } from "../screens/Checklist";
+import { Local } from "../screens/Local";
+import { Gas } from "../screens/Gas";
 
 const stackRoutes = createStackNavigator();
 
@@ -25,6 +27,8 @@ const AppRoutes: React.FC = () => (
         <stackRoutes.Screen name="Budget" component={Orcamento}/>
         <stackRoutes.Screen name="AddTransaction" component={AddTransaction}/>
         <stackRoutes.Screen name="Checklist" component={Checklist}/>
+        <stackRoutes.Screen name="Local" component={Local}/>
+        <stackRoutes.Screen name="Gas" component={Gas}/>
 
     </stackRoutes.Navigator>
 )

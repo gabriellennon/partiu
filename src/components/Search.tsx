@@ -3,10 +3,11 @@ import { Alert, Platform } from 'react-native';
 import { GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 interface Props {
-  onLocationSelected: (data: {}, details: GooglePlaceDetail | null) => void;
+  // onLocationSelected: (data: {}, details: GooglePlaceDetail | null) => void;
+  placeholder: string;
 }
 
-export function Search(){
+export function Search({placeholder}: Props){
 // export function Search({onLocationSelected}: Props){
 
   return (
@@ -20,7 +21,7 @@ export function Search(){
         key: 'AIzaSyBrmn1Tm3BH9iwnMyNmQA3pIhje5xDXCF0',
         language: 'pt',
       }}
-      placeholder="Para onde deseja ir?"
+      placeholder={placeholder}
       // textInputProps={{
       //     autoCapitalize: "none",
       //     autoCorrect: false,

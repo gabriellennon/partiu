@@ -46,7 +46,7 @@ export function Home(){
       >
         <Marker coordinate={mapRegionMarker} title='Olha eu' description="Ver como passar o local de search pra casa" />
       </MapView>
-      <Search />
+      <Search placeholder="Para onde deseja ir?" />
     </Container>
   );
 }

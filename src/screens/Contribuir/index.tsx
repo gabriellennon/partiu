@@ -15,10 +15,13 @@ import TravelSvg from '../../assets/travel.png';
 import PetrolIcon from '../../assets/petrol.png';
 import { Alert, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export function Contribuir() {
-  function handleClickCard(){
-    Alert.alert('quer compartilhar?')
+  const navigation = useNavigation();
+  
+  function handleClickCard(route: string){
+    navigation.navigate(route as never, {} as never)
   }
 
   return (
@@ -29,7 +32,7 @@ export function Contribuir() {
       </Header>
       <TitlePage>O que você quer compartilhar?</TitlePage>
 
-      <CardButton onPress={handleClickCard}>
+      <CardButton onPress={() => handleClickCard('Local')}>
         <Image source={TravelSvg} />
         <ContentBox>
           <TitleCard>Locais</TitleCard>
@@ -38,7 +41,7 @@ export function Contribuir() {
         <MaterialIcons name="arrow-forward-ios" size={24} color="white" />
       </CardButton>
 
-      <CardButton onPress={handleClickCard}>
+      <CardButton onPress={() => handleClickCard('Gas')}>
         <Image source={PetrolIcon} />
         <ContentBox>
           <TitleCard>Preços</TitleCard>
