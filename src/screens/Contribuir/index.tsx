@@ -41,14 +41,14 @@ export function Contribuir() {
         <MaterialIcons name="arrow-forward-ios" size={24} color="white" />
       </CardButton>
 
-      <CardButton onPress={() => handleClickCard('Gas')}>
+      {/* <CardButton onPress={() => handleClickCard('Gas')}>
         <Image source={PetrolIcon} />
         <ContentBox>
           <TitleCard>Preços</TitleCard>
           <DescriptionCard>Compartilhe os preços da gasolina, {`\n`} para sempre estarmos atualizados</DescriptionCard>
         </ContentBox>
         <MaterialIcons name="arrow-forward-ios" size={24} color="white" />
-      </CardButton>
+      </CardButton> */}
     </Container>
   );
 }

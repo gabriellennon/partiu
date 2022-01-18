@@ -45,7 +45,7 @@ export function More() {
         </UserWrapper>
       </Header>
       <Content>
-        <Description>Seu nível</Description>
+        {/* <Description>Seu nível</Description> */}
 
         <ContainerCards>
           <CardMore
