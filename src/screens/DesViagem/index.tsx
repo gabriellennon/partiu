@@ -53,7 +53,7 @@ export function DesViagem() {
                     placeholder="Valor"
                 />
                 <ButtonContent>
-                    <Button title="Enviar" onPress={() => {}} />
+                    <Button title="Criar viagem" onPress={handleClickButton} />
                 </ButtonContent>
             </Content>
         </Container>
