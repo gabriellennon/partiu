@@ -29,7 +29,8 @@ export function Home(){
   });
 
   function handleBack(){
-    navigation.goBack();
+    // navigation.goBack();
+    navigation.navigate('Inicio' as never, {} as never)
   }
 
   return (

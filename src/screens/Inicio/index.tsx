@@ -25,7 +25,7 @@ export function Inicio(){
   
   function handleClickButton(){
     
-    navigation.navigate("Home" as never, {} as never)
+    navigation.navigate("Go" as never, {} as never)
   }
 
   return (
