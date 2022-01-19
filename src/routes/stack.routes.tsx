@@ -9,6 +9,7 @@ import { AddTransaction } from "../screens/AddTransaction";
 import { Checklist } from "../screens/Checklist";
 import { Local } from "../screens/Local";
 import { Gas } from "../screens/Gas";
+import { SignIn } from "../screens/SignIn";
 
 const stackRoutes = createStackNavigator();
 
@@ -21,6 +22,7 @@ const AppRoutes: React.FC = () => (
         initialRouteName="Splash"
     >
 
+        <stackRoutes.Screen name="SignIn" component={SignIn}/>
         <stackRoutes.Screen name="Inicio" component={Inicio}/>
         <stackRoutes.Screen name="Home" component={AuthRoutes}/>
         <stackRoutes.Screen name="Splash" component={Splash}/>

@@ -12,7 +12,7 @@ export function Splash(){
     const navigation = useNavigation();
 
     function startApp(){
-        navigation.navigate("Inicio" as never, {} as never)
+        navigation.navigate("SignIn" as never, {} as never)
     }
     
     useEffect(() =>{

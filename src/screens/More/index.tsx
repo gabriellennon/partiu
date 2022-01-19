@@ -39,7 +39,7 @@ export function More() {
               <UserName>Gabriel</UserName>
             </User>
           </UserInfo>
-          <LogoutButton onPress={() => {}}>
+          <LogoutButton onPress={() => navigation.navigate('SignIn' as never, {} as never)}>
             <Icon name="power" />
           </LogoutButton>
         </UserWrapper>
