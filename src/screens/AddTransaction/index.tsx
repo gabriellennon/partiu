@@ -70,13 +70,13 @@ export function AddTransaction(){
 
 
                         <TransactionTypes>
-                            <TransactionTypeButton 
+                            {/* <TransactionTypeButton 
                                 type="up" 
                                 title="Entrada" 
                                 onPress={() => handleTransactionTypes('positive')} 
                                 //passando o estado que tem qual o tipo selecionado
                                 isActive={transactionType === 'positive'}
-                            />
+                            /> */}
 
                             <TransactionTypeButton 
                                 type="down" 

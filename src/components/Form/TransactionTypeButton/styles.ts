@@ -12,8 +12,9 @@ interface ContainerProps {
     type:  'up' | 'down';
 }
 
+// width: 48%;
 export const Container = styled.View<ContainerProps>`
-    width: 48%;
+    width: 100%;
 
     border-width: ${({ isActive, type }) => isActive ? 0 : 1.5}px;
     border-style: solid;

@@ -21,7 +21,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
     <View style={styles.inputContainer}>
       <TextInput 
         style={styles.input} 
-        placeholder="Adicionar novo todo..."
+        placeholder="Adicionar novo to-do..."
         placeholderTextColor="#B2B2B2"
         returnKeyType="send"
         selectionColor="#666666"
@@ -35,7 +35,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
         style={styles.addButton}
         onPress={handleAddNewTask}
       >
-        <Entypo name="chevron-right" size={24} color="#B2B2B2" />
+        <Entypo name="check" size={24} color="#ffff" />
       </TouchableOpacity>
     </View>
   )
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     color: '#666666'
   },
   addButton: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FF872C',
     height: 56,
     paddingHorizontal: 12,
     justifyContent: 'center',
