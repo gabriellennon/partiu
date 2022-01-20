@@ -66,10 +66,17 @@ export const Content = styled.View``;
 
 export const Description = styled.Text`
     text-align: center;
-    color: ${({ theme }) => theme.colors.dark_light };
+    color: ${({ theme }) => theme.colors.text_dark };
     font-size: ${RFValue(18)}px;
     font-family: ${({ theme }) => theme.fonts.medium };
-    margin: 24px 0;
+    margin-top: 24px;
+`;
+export const Placetrip = styled.Text`
+    text-align: center;
+    color: ${({ theme }) => theme.colors.dark_light };
+    font-size: ${RFValue(16)}px;
+    font-family: ${({ theme }) => theme.fonts.medium };
+    margin: 10px 0;
 `;
 
 export const ContainerCards = styled.View`

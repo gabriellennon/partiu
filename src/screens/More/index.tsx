@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { CardMore } from '../../components/CardMore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -17,12 +17,19 @@ import {
   Icon,
   Content,
   Description,
-  ContainerCards
+  ContainerCards,
+  Placetrip
 } from './styles';
+
+interface AsyncData {
+  name: string;
+  value: string;
+}
 
 export function More() {
   const navigation = useNavigation();
   const dataKey = '@partiu:newTravel';
+  const [dataObject, setDataObject] = useState<AsyncData>();
   
   function handleGoClickButton(route: string){
     
@@ -34,6 +41,7 @@ export function More() {
       const dataResponse = await AsyncStorage.getItem(dataKey);
       //Coloco que o ! pra dizer que sempre vai ter alguma coisa
       console.log(JSON.parse(dataResponse!));
+      setDataObject(JSON.parse(dataResponse!))
     }
 
     loadData();
@@ -57,7 +65,8 @@ export function More() {
         </UserWrapper>
       </Header>
       <Content>
-        {/* <Description>Seu nível</Description> */}
+        <Description>Nome da viagem</Description>
+        <Placetrip>{dataObject?.name}</Placetrip>
 
         <ContainerCards>
           <CardMore
