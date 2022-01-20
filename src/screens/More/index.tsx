@@ -69,15 +69,15 @@ export function More() {
         <Placetrip>{dataObject?.name}</Placetrip>
 
         <ContainerCards>
-          <CardMore
+          {/* <CardMore
             IconHeader='home'
             TitleButton='Minha casa'
             onPress={() => {}}
-          />
+          /> */}
           <CardMore
             IconHeader='location-on'
-            TitleButton='Minhas viagens'
-            onPress={() => {}}
+            TitleButton='Viagens realizadas'
+            onPress={() => handleGoClickButton('MyTravel')}
           />
           <CardMore
             IconHeader='monetization-on'
