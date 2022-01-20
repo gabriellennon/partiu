@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { CardMore } from '../../components/CardMore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container, 
@@ -21,11 +22,22 @@ import {
 
 export function More() {
   const navigation = useNavigation();
+  const dataKey = '@partiu:newTravel';
   
   function handleGoClickButton(route: string){
     
     navigation.navigate(route as never, {} as never)
   }
+
+  useEffect(() => {
+    async function loadData(){
+      const dataResponse = await AsyncStorage.getItem(dataKey);
+      //Coloco que o ! pra dizer que sempre vai ter alguma coisa
+      console.log(JSON.parse(dataResponse!));
+    }
+
+    loadData();
+  }, []);
 
   return (
     <Container>
