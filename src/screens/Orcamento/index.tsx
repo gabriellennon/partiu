@@ -5,6 +5,7 @@ import { TransationCardProps } from '../../components/TransactionCard';
 import { TransactionCardHistory } from '../../components/TransactionCardHistory';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
     Container,
@@ -34,10 +35,17 @@ interface HighlightDataInterface {
     total: HighlightProps
 }
 
+interface AsyncData {
+    name: string;
+    value: string;
+}
+
 export function Orcamento() {
     const navigation = useNavigation();
     const theme = useTheme();
     const [transactions, setTransactions] = useState<DataListProps[]>([]);
+    const dataKey = '@partiu:newTravel';
+    const [dataObject, setDataObject] = useState<AsyncData>();
     //começa sendo vazio do tipo HighlightDataInterface
     const [highlightData, setHighlightData] = useState<HighlightDataInterface>({} as HighlightDataInterface);
 
@@ -48,6 +56,16 @@ export function Orcamento() {
     function handleGoClickButton(route: string){
         navigation.navigate(route as never, {} as never)
     }
+
+    useEffect(() => {
+        async function loadData(){
+          const dataResponse = await AsyncStorage.getItem(dataKey);
+          //Coloco que o ! pra dizer que sempre vai ter alguma coisa
+          setDataObject(JSON.parse(dataResponse!))
+        }
+    
+        loadData();
+    }, []);
 
     useEffect(() => {
         //data mocked
@@ -98,7 +116,7 @@ export function Orcamento() {
                 <HighlightCard
                     type="up"
                     title="Disponível"
-                    amount="R$ 17.400,00"
+                    amount={`R$ ${dataObject?.value}`}
                     lastTransaction="Dinheiro disponível para usar"
                 />
                 <HighlightCard
