@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { HighlightCard } from '../../components/HighlightCard';
 import { TransationCardProps } from '../../components/TransactionCard';
 import { TransactionCardHistory } from '../../components/TransactionCardHistory';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useTheme } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -26,8 +26,8 @@ export interface DataListProps extends TransationCardProps {
 }
 
 interface HighlightProps {
-    amount: string;
-    lastTransaction: string;
+    total: string;
+    // lastTransaction: string;
 }
 interface HighlightDataInterface {
     entries: HighlightProps,
@@ -48,22 +48,27 @@ export function Orcamento() {
     const [dataObject, setDataObject] = useState<AsyncData>();
     //começa sendo vazio do tipo HighlightDataInterface
     const [highlightData, setHighlightData] = useState<HighlightDataInterface>({} as HighlightDataInterface);
+    const [totalPrevisto, setTotalPrevisto] = useState('0');
 
     const dataKeyTransaction = `@partiu:transactions_user`;
 
-    function handleBack(){
-        navigation.goBack();
-    }
+    // console.log(teste)
 
-    function handleGoClickButton(route: string){
-        navigation.navigate(route as never, {} as never)
-    }
+    let entriesTotal = 0;
+    let expensiveTotal = 0;
 
     async function loadTransactions() {
         const response = await AsyncStorage.getItem(dataKeyTransaction);
         const transactions = response ? JSON.parse(response) : [];
 
         const transactionsFormatted: DataListProps[] = transactions.map((item: DataListProps) => {
+            if(item.type === 'positive'){
+                //Pegando o valor em entriesSum e somando mais o valor de item.amount , que é igual a entriesTotal = entriesTotal +  Number(item.amount)
+                entriesTotal += Number(item.amount);
+            }else {
+                expensiveTotal += Number(item.amount);
+            }
+            
             const amount = Number(item.amount).toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
@@ -86,6 +91,44 @@ export function Orcamento() {
         });
 
         setTransactions(transactionsFormatted);
+        const totalValue = Number(dataObject?.value ? dataObject?.value : 0) - expensiveTotal;
+
+        setHighlightData({
+            entries: {
+                total: entriesTotal.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+            },
+            expensives: {
+                total: expensiveTotal.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+            },
+            total: {
+                total: totalValue.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+            }
+        })
+
+        let totalFormatted = Number(dataObject?.value).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        })
+        setTotalPrevisto(totalFormatted);
+        console.log(highlightData)
+    }
+
+
+    function handleBack(){
+        navigation.goBack();
+    }
+
+    function handleGoClickButton(route: string){
+        navigation.navigate(route as never, {} as never)
     }
 
     useEffect(() => {
@@ -99,20 +142,14 @@ export function Orcamento() {
     }, []);
 
     useEffect(() => {
+        // Limpar a lista caso precise
+        // AsyncStorage.removeItem(dataKeyTransaction);
         loadTransactions();
-
-        //data mocked
-        // setTransactions([
-        //     { 
-        //         id: '1',
-        //         type: 'negative',
-        //         name: 'Comida',
-        //         amount: 'R$ 1.200',
-        //         category: 'food',
-        //         date: '12/10/2021',
-        //     },
-        // ])
     },[])
+
+    useFocusEffect(useCallback(() => {
+        loadTransactions();
+    },[]));
 
     return (
         <Container>
@@ -133,20 +170,20 @@ export function Orcamento() {
                 <HighlightCard
                     type="up"
                     title="Disponível"
-                    amount={`R$ ${dataObject?.value}`}
+                    amount={highlightData.total.total}
                     lastTransaction="Dinheiro disponível para usar"
                 />
                 <HighlightCard
                     type="down"
                     title="Gastos"
-                    amount="R$ 10.000,00"
+                    amount={highlightData.expensives.total}
                     lastTransaction="Total de gastos"
                 />
                 <HighlightCard
                     type="total"
                     title="Total previsto"
-                    amount="R$ 10.000,00"
-                    lastTransaction="Total geral"
+                    amount={totalPrevisto}
+                    lastTransaction="Total previsto para gastar na viagem"
                 />
 
             </HighlightCards>
