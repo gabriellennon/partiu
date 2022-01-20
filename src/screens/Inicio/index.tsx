@@ -23,9 +23,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 export function Inicio(){
   const navigation = useNavigation();
   
-  function handleClickButton(){
+  function handleClickButton(route: string){
     
-    navigation.navigate("Go" as never, {} as never)
+    navigation.navigate(route as never, {} as never)
   }
 
   return (
@@ -38,14 +38,14 @@ export function Inicio(){
         <SubTitle>Como deseja começar?</SubTitle>
 
         <ButtonsContainer>
-          <InitialButton onPress={handleClickButton}>
+          <InitialButton onPress={() =>handleClickButton('Go')}>
             <ContentBox>
               <TitleButton>nova viagem</TitleButton>
               <DescriptionButton>Crie uma nova viagem</DescriptionButton>
             </ContentBox>
             <MaterialIcons name="arrow-forward-ios" size={24} color="#F0F0F0" />
           </InitialButton>
-          <InitialButton onPress={handleClickButton}>
+          <InitialButton onPress={() => handleClickButton('CreatedTravels')}>
             <ContentBox>
               <TitleButton>Viagens criadas</TitleButton>
               <DescriptionButton>Gerencie ou inicie uma viagem criada</DescriptionButton>
