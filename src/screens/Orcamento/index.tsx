@@ -49,12 +49,43 @@ export function Orcamento() {
     //começa sendo vazio do tipo HighlightDataInterface
     const [highlightData, setHighlightData] = useState<HighlightDataInterface>({} as HighlightDataInterface);
 
+    const dataKeyTransaction = `@partiu:transactions_user`;
+
     function handleBack(){
         navigation.goBack();
     }
 
     function handleGoClickButton(route: string){
         navigation.navigate(route as never, {} as never)
+    }
+
+    async function loadTransactions() {
+        const response = await AsyncStorage.getItem(dataKeyTransaction);
+        const transactions = response ? JSON.parse(response) : [];
+
+        const transactionsFormatted: DataListProps[] = transactions.map((item: DataListProps) => {
+            const amount = Number(item.amount).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            })
+
+            const date = Intl.DateTimeFormat('pt-BR', {
+                day:'2-digit',
+                month:'2-digit',
+                year:'2-digit',
+            }).format(new Date(item.date));
+
+            return {
+                id: item.id,
+                name: item.name,
+                amount,
+                type: item.type,
+                category: item.category,
+                date
+            }
+        });
+
+        setTransactions(transactionsFormatted);
     }
 
     useEffect(() => {
@@ -68,33 +99,19 @@ export function Orcamento() {
     }, []);
 
     useEffect(() => {
+        loadTransactions();
+
         //data mocked
-        setTransactions([
-            { 
-                id: '1',
-                type: 'negative',
-                name: 'Comida',
-                amount: 'R$ 1.200',
-                category: 'food',
-                date: '12/10/2021',
-            },
-            { 
-                id: '2',
-                type: 'negative',
-                name: 'Roupa',
-                amount: 'R$ 400',
-                category: 'purchases',
-                date: '12/10/2021',
-            },
-            { 
-                id: '3',
-                type: 'positive',
-                name: 'Salário',
-                amount: 'R$ 11.200',
-                category: 'salary',
-                date: '12/10/2021',
-            },
-        ])
+        // setTransactions([
+        //     { 
+        //         id: '1',
+        //         type: 'negative',
+        //         name: 'Comida',
+        //         amount: 'R$ 1.200',
+        //         category: 'food',
+        //         date: '12/10/2021',
+        //     },
+        // ])
     },[])
 
     return (

@@ -12,8 +12,9 @@ import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
 import Routes from './src/routes';
 import AppLoading from 'expo-app-loading';
-import { SignIn } from './src/screens/SignIn';
 import { AuthProvider } from './src/hooks/auth';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 
 export default function App() {
 
