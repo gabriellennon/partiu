@@ -32,8 +32,11 @@ export function More() {
   const [dataObject, setDataObject] = useState<AsyncData>();
   
   function handleGoClickButton(route: string){
-    
-    navigation.navigate(route as never, {} as never)
+    if(route === 'Budget'){
+      navigation.navigate(route as never,{valor: dataObject?.value} as never)
+    } else {
+      navigation.navigate(route as never, {} as never)
+    }
   }
 
   useEffect(() => {

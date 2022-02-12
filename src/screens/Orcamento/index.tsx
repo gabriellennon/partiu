@@ -6,6 +6,7 @@ import { TransactionCardHistory } from '../../components/TransactionCardHistory'
 import { useFocusEffect, useNavigation, useTheme } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AppLoading from 'expo-app-loading';
 
 import {
     Container,
@@ -39,6 +40,9 @@ interface AsyncData {
     name: string;
     value: string;
 }
+interface ParamsValue {
+    valor: number;
+}
 
 export function Orcamento() {
     const navigation = useNavigation();
@@ -49,6 +53,10 @@ export function Orcamento() {
     //começa sendo vazio do tipo HighlightDataInterface
     const [highlightData, setHighlightData] = useState<HighlightDataInterface>({} as HighlightDataInterface);
     const [totalPrevisto, setTotalPrevisto] = useState('0');
+    const [paramsValue, setParamsValue] = useState(0);
+    const [paramsValueFinal, setParamsValueFinal] = useState('');
+    const [refresh, setRefresh] = useState(1);
+    const [loading, setLoading] = useState(true);
 
     const dataKeyTransaction = `@partiu:transactions_user`;
 
@@ -90,9 +98,6 @@ export function Orcamento() {
             }
         });
 
-        setTransactions(transactionsFormatted);
-        const totalValue = Number(dataObject?.value ? dataObject?.value : 0) - expensiveTotal;
-
         setHighlightData({
             entries: {
                 total: entriesTotal.toLocaleString('pt-BR', {
@@ -107,19 +112,30 @@ export function Orcamento() {
                 })
             },
             total: {
-                total: totalValue.toLocaleString('pt-BR', {
+                total: paramsValue.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
                 })
             }
         })
 
-        let totalFormatted = Number(dataObject?.value).toLocaleString('pt-BR', {
+        console.log('high',highlightData)
+
+        // let totalFormatted = Number(dataObject?.value).toLocaleString('pt-BR', {
+        //     style: 'currency',
+        //     currency: 'BRL'
+        // })
+        // setTotalPrevisto(totalFormatted);
+        // console.log(highlightData)
+
+        const paramsFormatted = paramsValue.toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL'
         })
-        setTotalPrevisto(totalFormatted);
-        console.log(highlightData)
+
+        // setTransactions(transactionsFormatted);
+        setParamsValueFinal(paramsFormatted);
+        const totalValue = Number(dataObject?.value ? dataObject?.value : 0) - expensiveTotal;
     }
 
 
@@ -131,25 +147,49 @@ export function Orcamento() {
         navigation.navigate(route as never, {} as never)
     }
 
-    useEffect(() => {
-        async function loadData(){
-          const dataResponse = await AsyncStorage.getItem(dataKey);
-          //Coloco que o ! pra dizer que sempre vai ter alguma coisa
-          setDataObject(JSON.parse(dataResponse!))
+    function getData(){
+        const test = navigation.getState();
+        const dataParams = test.routes.filter(e => e.name === 'Budget')
+        // console.log('nav',test.routes)
+
+        const finishparams = dataParams[0].params.valor;
+        setParamsValue(finishparams);
+        // console.log('PARAMS', finishparams)
+        if(paramsValue !== 0){
+            console.log('TESTE', paramsValue);
+            loadTransactions();
+            setLoading(false);
         }
-    
-        loadData();
-    }, []);
+    }
 
     useEffect(() => {
-        // Limpar a lista caso precise
-        // AsyncStorage.removeItem(dataKeyTransaction);
+        getData();
+        setRefresh(2);
+
+        
+        // async function loadData(){
+        //   const dataResponse = await AsyncStorage.getItem(dataKey);
+        //   //Coloco que o ! pra dizer que sempre vai ter alguma coisa
+        //   setDataObject(JSON.parse(dataResponse!))
+          
+        //     // Limpar a lista caso precise
+        //     // AsyncStorage.removeItem(dataKeyTransaction);
+        //     console.log('high', JSON.parse(dataResponse!))
+        //     console.log('objeto async', dataObject)
+        // }
+        
+        // loadData();
         loadTransactions();
-    },[])
+        
+    }, [refresh]);
 
     useFocusEffect(useCallback(() => {
         loadTransactions();
     },[]));
+
+    if(loading){
+        return <AppLoading />
+    }
 
     return (
         <Container>
@@ -170,19 +210,22 @@ export function Orcamento() {
                 <HighlightCard
                     type="up"
                     title="Disponível"
-                    amount={highlightData.total.total}
+                    // amount={highlightData.total.total}
+                    amount="12"
                     lastTransaction="Dinheiro disponível para usar"
                 />
                 <HighlightCard
                     type="down"
                     title="Gastos"
-                    amount={highlightData.expensives.total}
+                    // amount={highlightData.expensives.total}
+                    amount="R$ 25,00"
                     lastTransaction="Total de gastos"
                 />
                 <HighlightCard
                     type="total"
                     title="Total previsto"
-                    amount={totalPrevisto}
+                    // amount={totalPrevisto}
+                    amount={paramsValueFinal}
                     lastTransaction="Total previsto para gastar na viagem"
                 />
 
