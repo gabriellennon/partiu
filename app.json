@@ -1,5 +1,7 @@
 {
   "name": "partiu",
+  "slug": "partiu",
+  "scheme": "partiu",
   "displayName": "partiu",
   "expo": {
     "name": "partiu",
